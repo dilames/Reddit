@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FeedCollectonViewCell: AnimatableCollectionViewCell {
+final class FeedCollectionViewCell: AnimatableCollectionViewCell {
     
     @IBOutlet private weak var activityView: UIActivityIndicatorView!
     @IBOutlet private weak var imageView: UIImageView!

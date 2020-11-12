@@ -33,7 +33,7 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        collectionView.registerNib(withType: FeedCollectionViewCell.self)
     }
 
 
@@ -45,7 +45,7 @@ private extension FeedViewController {
 }
 
 // MARK: UICollectionViewDelegate & UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
-typealias CollectionProtocols = UICollectionViewDelegate & UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+typealias CollectionProtocols = UICollectionViewDelegate & UICollectionViewDataSource
 extension FeedViewController: CollectionProtocols {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -53,22 +53,12 @@ extension FeedViewController: CollectionProtocols {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let rawView = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCollectonViewCell", for: indexPath)
-        let cellView = rawView as? FeedCollectonViewCell
-        return cellView ?? UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let viewsOnDisplay: CGFloat = 1.5
-        return CGSize(width: collectionView.frame.size.width / viewsOnDisplay,
-                      height: collectionView.frame.size.height / viewsOnDisplay)
+        return collectionView.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let viewModel = layersViewModels[indexPath.row]
-        guard let viewCell = collectionView.cellForItem(at: indexPath) as? FeedCollectonViewCell else { return }
+        guard let viewCell = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
         transition = Transition(cell: viewCell)
 //        viewController.modalPresentationStyle = .custom
 //        viewController.modalPresentationCapturesStatusBarAppearance = true

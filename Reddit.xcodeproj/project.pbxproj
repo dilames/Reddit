@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6210F3B1255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6210F3B0255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift */; };
 		627E6F47255AE01E0022A654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E6F46255AE01E0022A654 /* AppDelegate.swift */; };
 		627E6F49255AE01E0022A654 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E6F48255AE01E0022A654 /* SceneDelegate.swift */; };
 		627E6F4B255AE01E0022A654 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E6F4A255AE01E0022A654 /* FeedViewController.swift */; };
@@ -15,12 +16,12 @@
 		627E6F53255AE01F0022A654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 627E6F51255AE01F0022A654 /* LaunchScreen.storyboard */; };
 		627E6F70255AEF0B0022A654 /* Environmental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E6F6F255AEF0B0022A654 /* Environmental.swift */; };
 		627E6F7C255AF1CD0022A654 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627E6F7B255AF1CD0022A654 /* UseCaseProvider.swift */; };
+		62C0CCD8255D88B5003D1A84 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0CCD6255D88B5003D1A84 /* FeedCollectionViewCell.swift */; };
+		62C0CCD9255D88B5003D1A84 /* FeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C0CCD7255D88B5003D1A84 /* FeedCollectionViewCell.xib */; };
 		62D8DEFB255C093D00C58613 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DEFA255C093D00C58613 /* Transition.swift */; };
 		62D8DEFF255C09A500C58613 /* AppearingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DEFE255C09A500C58613 /* AppearingTransitioning.swift */; };
 		62D8DF02255C09CC00C58613 /* DisappearingTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF01255C09CC00C58613 /* DisappearingTransitioning.swift */; };
-		62D8DF07255C0A4900C58613 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF06255C0A4900C58613 /* FeedCollectionViewCell.swift */; };
 		62D8DF0A255C0AB800C58613 /* AnimatableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF09255C0AB800C58613 /* AnimatableCollectionViewCell.swift */; };
-		62D8DF1C255C117300C58613 /* FeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D8DF1B255C117300C58613 /* FeedCollectionViewCell.xib */; };
 		62D8DF24255C175D00C58613 /* UITableView+dequeueReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF23255C175D00C58613 /* UITableView+dequeueReusable.swift */; };
 		62D8DF28255C1B9F00C58613 /* UICollectionView+SupplementarySectionViewKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF27255C1B9F00C58613 /* UICollectionView+SupplementarySectionViewKind.swift */; };
 		62D8DF2C255C1C5700C58613 /* UICollectionView+registerNibWithType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF2B255C1C5700C58613 /* UICollectionView+registerNibWithType.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6210F3B0255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		627E6F43255AE01E0022A654 /* Reddit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reddit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		627E6F46255AE01E0022A654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		627E6F48255AE01E0022A654 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,12 +53,12 @@
 		627E6F54255AE01F0022A654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		627E6F6F255AEF0B0022A654 /* Environmental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environmental.swift; sourceTree = "<group>"; };
 		627E6F7B255AF1CD0022A654 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		62C0CCD6255D88B5003D1A84 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		62C0CCD7255D88B5003D1A84 /* FeedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		62D8DEFA255C093D00C58613 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		62D8DEFE255C09A500C58613 /* AppearingTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearingTransitioning.swift; sourceTree = "<group>"; };
 		62D8DF01255C09CC00C58613 /* DisappearingTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingTransitioning.swift; sourceTree = "<group>"; };
-		62D8DF06255C0A4900C58613 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		62D8DF09255C0AB800C58613 /* AnimatableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableCollectionViewCell.swift; sourceTree = "<group>"; };
-		62D8DF1B255C117300C58613 /* FeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		62D8DF23255C175D00C58613 /* UITableView+dequeueReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+dequeueReusable.swift"; sourceTree = "<group>"; };
 		62D8DF27255C1B9F00C58613 /* UICollectionView+SupplementarySectionViewKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+SupplementarySectionViewKind.swift"; sourceTree = "<group>"; };
 		62D8DF2B255C1C5700C58613 /* UICollectionView+registerNibWithType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+registerNibWithType.swift"; sourceTree = "<group>"; };
@@ -232,9 +234,10 @@
 		62D8DF0F255C0BC200C58613 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				62C0CCD6255D88B5003D1A84 /* FeedCollectionViewCell.swift */,
+				62C0CCD7255D88B5003D1A84 /* FeedCollectionViewCell.xib */,
 				627E6F4A255AE01E0022A654 /* FeedViewController.swift */,
-				62D8DF06255C0A4900C58613 /* FeedCollectionViewCell.swift */,
-				62D8DF1B255C117300C58613 /* FeedCollectionViewCell.xib */,
+				6210F3B0255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -377,7 +380,7 @@
 			files = (
 				627E6F53255AE01F0022A654 /* LaunchScreen.storyboard in Resources */,
 				627E6F50255AE01F0022A654 /* Assets.xcassets in Resources */,
-				62D8DF1C255C117300C58613 /* FeedCollectionViewCell.xib in Resources */,
+				62C0CCD9255D88B5003D1A84 /* FeedCollectionViewCell.xib in Resources */,
 				627E6F4E255AE01E0022A654 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,9 +397,9 @@
 				627E6F70255AEF0B0022A654 /* Environmental.swift in Sources */,
 				62D8DF24255C175D00C58613 /* UITableView+dequeueReusable.swift in Sources */,
 				627E6F7C255AF1CD0022A654 /* UseCaseProvider.swift in Sources */,
+				62C0CCD8255D88B5003D1A84 /* FeedCollectionViewCell.swift in Sources */,
 				62FA7AE9255AF4F200962487 /* TargetType.swift in Sources */,
 				62FA7AE0255AF42700962487 /* ParameterEncoding.swift in Sources */,
-				62D8DF07255C0A4900C58613 /* FeedCollectionViewCell.swift in Sources */,
 				62FA7AE3255AF46300962487 /* HTTPMethod.swift in Sources */,
 				627E6F4B255AE01E0022A654 /* FeedViewController.swift in Sources */,
 				62D8DEFF255C09A500C58613 /* AppearingTransitioning.swift in Sources */,
@@ -415,6 +418,7 @@
 				62FA7AE6255AF48700962487 /* RestfulLayer.swift in Sources */,
 				62D8DF2F255C1C7B00C58613 /* UICollectionView+dequeueReusable.swift in Sources */,
 				62D8DF32255C1D4700C58613 /* UITableView+registerNibWithType.swift in Sources */,
+				6210F3B1255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift in Sources */,
 				62D8DF28255C1B9F00C58613 /* UICollectionView+SupplementarySectionViewKind.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,7 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6RMDF3HTL;
 				INFOPLIST_FILE = "$(SRCROOT)/Reddit/Configuration/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -585,7 +589,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6RMDF3HTL;
 				INFOPLIST_FILE = "$(SRCROOT)/Reddit/Configuration/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

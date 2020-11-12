@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedCollectonViewCell" customModule="Reddit" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="FeedCollectonViewCell" id="iN0-l3-epB" customClass="FeedCollectonViewCell" customModule="Reddit" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FeedCollectionViewCell" customModule="Reddit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="505" height="275"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -81,6 +81,9 @@
                         <constraint firstAttribute="trailing" secondItem="JHZ-qD-8kE" secondAttribute="trailing" constant="24" id="m1d-Tq-uz0"/>
                     </constraints>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RYA-MB-Hde">
+                    <rect key="frame" x="242.5" y="127.5" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,6 +91,8 @@
                 <constraint firstItem="Jsn-hZ-F1N" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="98D-sp-prd"/>
                 <constraint firstItem="MQh-Yw-b4f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AgE-hK-dLp"/>
                 <constraint firstAttribute="trailing" secondItem="1qq-9i-NsJ" secondAttribute="trailing" id="CdT-0z-la3"/>
+                <constraint firstItem="RYA-MB-Hde" firstAttribute="centerX" secondItem="MQh-Yw-b4f" secondAttribute="centerX" id="Gif-op-yEq"/>
+                <constraint firstItem="RYA-MB-Hde" firstAttribute="centerY" secondItem="MQh-Yw-b4f" secondAttribute="centerY" id="TW1-gO-vQb"/>
                 <constraint firstItem="1qq-9i-NsJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aKX-VJ-5Tj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MQh-Yw-b4f" secondAttribute="bottom" id="bMW-w6-Hd6"/>
                 <constraint firstItem="Jsn-hZ-F1N" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="fYt-dq-vMf"/>
@@ -98,13 +103,14 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="activityView" destination="RYA-MB-Hde" id="yQh-1d-W6I"/>
                 <outlet property="authorLabel" destination="YgV-Va-2Jh" id="f9y-js-Hhv"/>
                 <outlet property="commentsLabel" destination="sme-lM-7T5" id="6Gn-4h-dBg"/>
                 <outlet property="imageView" destination="MQh-Yw-b4f" id="9wb-id-1lF"/>
                 <outlet property="timestampLabel" destination="bec-6X-fAw" id="fjo-hb-l8K"/>
                 <outlet property="titleLabel" destination="Qrp-m1-kYT" id="tfy-Rb-xyJ"/>
             </connections>
-            <point key="canvasLocation" x="87.1875" y="235.03521126760563"/>
+            <point key="canvasLocation" x="-79.6875" y="20.598591549295776"/>
         </view>
     </objects>
     <resources>
