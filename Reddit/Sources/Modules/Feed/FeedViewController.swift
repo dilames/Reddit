@@ -7,25 +7,9 @@
 
 import UIKit
 
-
-//struct ViewModel {
-//
-//    struct Input {
-//
-//    }
-//
-//    struct Output {
-//
-//    }
-//
-//    func load() {
-//
-//    }
-//
-//}
-
-final class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController, ViewModelContainer {
     
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var transition: Transition?
@@ -36,7 +20,10 @@ final class FeedViewController: UIViewController {
         collectionView.registerNib(withType: FeedCollectionViewCell.self)
         collectionView.backgroundColor = .white
     }
-
+    
+    func didSetViewModel(_ viewModel: FeedViewModel) {
+        
+    }
 
 }
 
