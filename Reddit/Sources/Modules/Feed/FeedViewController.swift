@@ -34,6 +34,7 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.registerNib(withType: FeedCollectionViewCell.self)
+        collectionView.backgroundColor = .white
     }
 
 

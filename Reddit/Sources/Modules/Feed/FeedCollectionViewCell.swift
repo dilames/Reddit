@@ -17,19 +17,34 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell {
     @IBOutlet private weak var timestampLabel: UILabel!
     @IBOutlet private weak var commentsLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = UIColor(red: .random(in: 0...255) / 255,
-                                  green: .random(in: 0...255) / 255,
-                                  blue: .random(in: 0...255) / 255,
-                                  alpha: 1.0)
+        contentView.backgroundColor = UIColor(red: .random(in: 0...255) / 255,
+                                              green: .random(in: 0...255) / 255,
+                                              blue: .random(in: 0...255) / 255,
+                                              alpha: 1.0)
         
-        layer.cornerRadius = frame.size.height / 50
+        contentView.layer.cornerRadius = 10.0
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.clear.cgColor
+        contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 10
+        
+        layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowOffset = .init(width: 0, height: 4)
-        layer.shadowRadius = 12
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = .init(width: 0, height: 2)
+        layer.shadowRadius = 6
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard layer.shadowPath == .none else { return }
+        layer.shadowPath = UIBezierPath(roundedRect: bounds,
+                                        cornerRadius: contentView.layer.cornerRadius).cgPath
     }
     
     override func prepareForReuse() {
