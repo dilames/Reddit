@@ -10,7 +10,7 @@ import Foundation
 
 private enum ViewModelContainerKeys {
     static var viewModel = "viewModel"
-    static var cancallableBag = "cancallableBag"
+    static var subscriptions = "subscriptions"
 }
 
 public protocol ReusableViewModelContainer {
@@ -38,7 +38,7 @@ public extension ReusableViewModelContainer where Self: NSObject {
 private extension ReusableViewModelContainer where Self: NSObject {
     
     func set(viewModel: ViewModel?) {
-        dissociate(forKey: &ViewModelContainerKeys.cancallableBag)
+        dissociate(forKey: &ViewModelContainerKeys.subscriptions)
         dissociate(forKey: &ViewModelContainerKeys.viewModel)
         guard let viewModel = viewModel else { return }
         associate(value: viewModel, forKey: &ViewModelContainerKeys.viewModel)

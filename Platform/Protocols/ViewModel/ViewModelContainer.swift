@@ -11,29 +11,37 @@ import UIKit
 
 private enum ViewModelContainerKeys {
     static var viewModel = "viewModel"
-    static var cancallableBag = "cancallableBag"
+    static var subscriptions = "subscriptions"
 }
 
 // MARK: - ViewModelContainer
 public protocol ViewModelContainer: NSObject {
     associatedtype ViewModel
     var viewModel: ViewModel { get set }
+    var cancallableBag: Set<AnyCancellable> { get set }
     func didSetViewModel(_ viewModel: ViewModel)
 }
 
 public extension ViewModelContainer where Self: UIViewController {
+    
     var viewModel: ViewModel {
         get { return associated(valueForKey: &ViewModelContainerKeys.viewModel)! }
         set { set(viewModel: newValue) }
+    }
+    
+    var cancallableBag: Set<AnyCancellable> {
+        set { associate(value: cancallableBag, forKey: &ViewModelContainerKeys.subscriptions) }
+        get { return associated(valueForKey: &ViewModelContainerKeys.subscriptions)! }
     }
 }
 
 private extension ViewModelContainer where Self: NSObject {
     
-    func set(viewModel model: ViewModel) {
-        var cancallableBag = Set<AnyCancellable>()
-        associate(value: cancallableBag, forKey: &ViewModelContainerKeys.cancallableBag)
-        associate(value: model, forKey: &ViewModelContainerKeys.viewModel)
+    func set(viewModel: ViewModel) {
+        dissociate(forKey: &ViewModelContainerKeys.viewModel)
+        dissociate(forKey: &ViewModelContainerKeys.subscriptions)
+        cancallableBag = Set<AnyCancellable>()
+        associate(value: viewModel, forKey: &ViewModelContainerKeys.viewModel)
         if let viewController = self as? UIViewController {
             viewController.publisher(for: \.isViewLoaded)
                 .receive(on: OperationQueue.main)

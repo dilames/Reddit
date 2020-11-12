@@ -48,4 +48,5 @@ final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return false }
         return newBounds.size != collectionView.bounds.size
     }
+    
 }
