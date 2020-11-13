@@ -11,11 +11,12 @@ import Foundation
 struct FeedViewModel: ViewModel {
     
     struct Output {
-//        let posts: AnyPublisher<[String], Never>
+        let posts: AnyPublisher<[String], Never>
     }
     
     func transform(_ input: Void) -> Output {
-        return Output()
+        let postsPublisher = CurrentValueSubject<[String], Never>(["Hello", "I would like to try reload this CollectionView with Combine Subscriber"])
+        return Output(posts: postsPublisher.eraseToAnyPublisher())
     }
 
 }

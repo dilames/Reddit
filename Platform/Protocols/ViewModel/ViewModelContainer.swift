@@ -18,7 +18,7 @@ private enum ViewModelContainerKeys {
 public protocol ViewModelContainer: NSObject {
     associatedtype ViewModel
     var viewModel: ViewModel { get set }
-    var cancallableBag: Set<AnyCancellable> { get set }
+    var subscriptions: Set<AnyCancellable> { get set }
     func didSetViewModel(_ viewModel: ViewModel)
 }
 
@@ -29,8 +29,8 @@ public extension ViewModelContainer where Self: UIViewController {
         set { set(viewModel: newValue) }
     }
     
-    var cancallableBag: Set<AnyCancellable> {
-        set { associate(value: cancallableBag, forKey: &ViewModelContainerKeys.subscriptions) }
+    var subscriptions: Set<AnyCancellable> {
+        set { associate(value: subscriptions, forKey: &ViewModelContainerKeys.subscriptions) }
         get { return associated(valueForKey: &ViewModelContainerKeys.subscriptions)! }
     }
 }
@@ -40,7 +40,7 @@ private extension ViewModelContainer where Self: NSObject {
     func set(viewModel: ViewModel) {
         dissociate(forKey: &ViewModelContainerKeys.viewModel)
         dissociate(forKey: &ViewModelContainerKeys.subscriptions)
-        cancallableBag = Set<AnyCancellable>()
+        subscriptions = Set<AnyCancellable>()
         associate(value: viewModel, forKey: &ViewModelContainerKeys.viewModel)
         if let viewController = self as? UIViewController {
             viewController.publisher(for: \.isViewLoaded)
@@ -48,7 +48,7 @@ private extension ViewModelContainer where Self: NSObject {
                 .filter { $0 }
                 .map { _ in }
                 .sink { [unowned self] _ in didSetViewModel(viewModel) }
-                .store(in: &cancallableBag)
+                .store(in: &subscriptions)
         }
     }
     

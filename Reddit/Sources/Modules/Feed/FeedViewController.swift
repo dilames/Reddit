@@ -13,7 +13,6 @@ final class FeedViewController: UIViewController, ViewModelContainer {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    
     private var flatCollectionDataSource = FlatCollectionViewDataSource<[String]>(
         cellConstructor: { $0.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: $1) }
     )
@@ -22,12 +21,15 @@ final class FeedViewController: UIViewController, ViewModelContainer {
         super.viewDidLoad()
         
         collectionView.registerNib(withType: FeedCollectionViewCell.self)
+        collectionView.dataSource = flatCollectionDataSource
         collectionView.backgroundColor = .white
     }
     
     func didSetViewModel(_ viewModel: FeedViewModel) {
         let output = viewModel.transform()
-        
+        output.posts
+            .bind(subscriber: flatCollectionDataSource.subscriber(for: collectionView))
+            .store(in: &subscriptions)
     }
     
 }

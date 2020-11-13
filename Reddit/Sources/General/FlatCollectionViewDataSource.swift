@@ -39,12 +39,13 @@ where
         return forwardingDataSource
     }
     
-    public func subscriber() -> AnySubscriber<Collection, Never> {
+    public func subscriber(for collectionView: UICollectionView) -> AnySubscriber<Collection, Never> {
         return AnySubscriber<Collection, Never>(
             receiveSubscription: { $0.request(.unlimited) },
             receiveValue: { [weak self] in
                 guard let self = self else { return .none }
                 self.collection = $0
+                collectionView.reloadData()
                 return .unlimited
             }
         )
