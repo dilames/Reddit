@@ -62,6 +62,7 @@ private extension ViewModelContainer where Self: NSObject {
             viewController.publisher(for: \.view, options: [.initial, .new, .old])
                 .receive(on: OperationQueue.main)
                 .filter { $0 != .none }
+                .first()
                 .map { _ in }
                 .sink { [unowned self] _ in didSetViewModel(viewModel) }
                 .store(in: &subscriptions)

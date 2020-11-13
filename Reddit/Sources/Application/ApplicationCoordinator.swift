@@ -19,6 +19,7 @@ final class ApplicationCoordinator {
     
     func start() {
         sceneDelegate.window?.rootViewController = feedViewController
+        sceneDelegate.window?.makeKeyAndVisible()
     }
     
 }

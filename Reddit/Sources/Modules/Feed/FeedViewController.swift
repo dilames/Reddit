@@ -34,24 +34,15 @@ final class FeedViewController: UIViewController, ViewModelContainer {
     
 }
 
-//// MARK: UICollectionViewDelegate & UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
-//typealias CollectionProtocols = UICollectionViewDelegate & UICollectionViewDataSource
-//extension FeedViewController: CollectionProtocols {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        return collectionView.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: indexPath)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        //        let viewModel = layersViewModels[indexPath.row]
-//        guard let viewCell = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
-//        //        viewController.modalPresentationStyle = .custom
-//        //        viewController.modalPresentationCapturesStatusBarAppearance = true
-//        //        viewController.transitioningDelegate = transition
-//        //        present(viewController, animated: true, completion: nil)
-//    }
-//}
+// MARK: UICollectionViewDelegate
+extension FeedViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        let viewModel = layersViewModels[indexPath.row]
+        guard let viewCell = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
+        //        viewController.modalPresentationStyle = .custom
+        //        viewController.modalPresentationCapturesStatusBarAppearance = true
+        //        viewController.transitioningDelegate = transition
+        //        present(viewController, animated: true, completion: nil)
+    }
+}

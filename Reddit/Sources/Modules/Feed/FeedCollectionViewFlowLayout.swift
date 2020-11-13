@@ -17,7 +17,7 @@ final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     var headerHeight: CGFloat = 0.0
     
-    var itemInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+    var itemInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
     
     override func prepare() {
         super.prepare()
@@ -29,7 +29,7 @@ final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         headerReferenceSize = CGSize(width: collectionView.bounds.width, height: headerHeight)
         sectionInset = itemInsets
         
-        let minWidth = min(collectionView.frame.height, collectionView.frame.width)
+        let minWidth = min(collectionView.frame.width, collectionView.frame.width)
         let estimatedItemWidth = (minWidth - verticalItemSpacing * CGFloat(columnsCount - 1)
             - sectionInset.left - sectionInset.right) / CGFloat(columnsCount)
         let collectionContentHeight = collectionView.bounds.height

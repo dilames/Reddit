@@ -20,8 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let windowScene = (scene as? UIWindowScene),
             let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
+        window = UIWindow(windowScene: windowScene)
         applicationCoordinator = ApplicationCoordinator(sceneDelegate: self, appDelegate: appDelegate)
         applicationCoordinator?.start()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+            self.window?.rootViewController = nil
+        }
     }
 
 
