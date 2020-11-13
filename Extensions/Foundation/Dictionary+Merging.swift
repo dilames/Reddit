@@ -7,22 +7,11 @@
 
 import Foundation
 
-internal extension Dictionary {
-    var jsonData: Foundation.Data? {
-        return try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
-    }
-}
-
-internal extension Dictionary {
+public extension Dictionary {
     
     @discardableResult
-    static func +(lhs: Self, rhs: Self?) -> Self {
-        return lhs.merging(rhs ?? [:]) { _ = $1; return $0; }
+    static func +(lhs: Self, rhs: Self) -> Self {
+        return lhs.merging(rhs) { _ = $1; return $0; }
     }
     
-    @discardableResult
-    static func +=(lhs: inout Self, rhs: Self?) -> Self {
-        lhs = lhs + rhs
-        return lhs
-    }
 }
