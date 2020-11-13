@@ -7,6 +7,6 @@
 
 import Foundation
 
-//public typealias UseCases
+public typealias UseCases = HasTopRedditPostsUseCase
 
-//public protocol UseCaseProvider: UseCases {}
+public protocol UseCaseProvider: UseCases {}
