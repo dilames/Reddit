@@ -13,7 +13,7 @@ import UIKit
     
     private(set) var cancallables = NSMutableArray()
     
-    init(_ cancallables: [AnyCancellable]) {
+    init(_ cancallables: [Cancellable]) {
         self.cancallables.addObjects(from: cancallables)
     }
     
