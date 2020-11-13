@@ -1,4 +1,14 @@
+//
+//  HTTPMethod.swift
+//  Reddit
+//
+//  Created by Andrew Chersky on 10.11.2020.
+//
+
+import Foundation
+
 public struct HTTPMethod: RawRepresentable, Equatable, Hashable {
+    
     /// `CONNECT` method.
     public static let connect = HTTPMethod(rawValue: "CONNECT")
     /// `DELETE` method.
@@ -23,4 +33,12 @@ public struct HTTPMethod: RawRepresentable, Equatable, Hashable {
     public init(rawValue: String) {
         self.rawValue = rawValue
     }
+}
+
+extension URLRequest {
+    
+    var method: HTTPMethod? {
+        return httpMethod != nil ? HTTPMethod(rawValue: httpMethod!) : nil
+    }
+    
 }

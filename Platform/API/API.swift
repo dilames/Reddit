@@ -9,14 +9,19 @@ import Foundation
 
 public enum API: HTTPEndpointDescribable {
     
-    case top(t: String, after: String, before: String, count: String, limit: String, show: String, sr_detail: String)
+    case top(time: Time, after: String?, before: String?, count: Int, limit: Int, show: Show, srDetail: Bool)
     
     public var path: String {
-        return "/top/www.reddit.com"
+        switch self {
+        case .top(let time, let after, let before, let count, let limit, let show, let srDetail):
+            return "top"
+        }
     }
     
     public var method: HTTPMethod {
-        return .get
+        switch self {
+        case .top: return .get
+        }
     }
     
     public var headers: [String : String] {

@@ -12,6 +12,7 @@ final public class HTTPSession {
     
     public enum Error: Swift.Error {
         case urlError(URLError)
+        case missingUrl
     }
     
     public typealias Response = (data: Data, response: URLResponse)
