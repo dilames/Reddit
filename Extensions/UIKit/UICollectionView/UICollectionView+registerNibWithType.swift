@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UICollectionView {
+public extension UICollectionView {
     
     func registerNib<T: UIView>(withType viewType: T.Type, fromBundle bundle: Bundle? = nil) {
         let reusableIdentifier = String(describing: viewType)

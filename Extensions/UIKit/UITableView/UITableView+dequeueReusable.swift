@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UITableView {
+public extension UITableView {
     
     func dequeueReusableCell<T: UITableViewCell>(forType cellType: T.Type, for indexPath: IndexPath) -> T {
         let reusableIdentifier = String(describing: cellType)

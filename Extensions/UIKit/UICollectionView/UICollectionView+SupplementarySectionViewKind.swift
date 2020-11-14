@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SupplementarySectionViewKind: RawRepresentable, Equatable, Hashable {
+public struct SupplementarySectionViewKind: RawRepresentable, Equatable, Hashable {
     
     public static let header = SupplementarySectionViewKind(rawValue: UICollectionView.elementKindSectionHeader)
     public static let footer = SupplementarySectionViewKind(rawValue: UICollectionView.elementKindSectionFooter)
@@ -20,7 +20,7 @@ struct SupplementarySectionViewKind: RawRepresentable, Equatable, Hashable {
     
 }
 
-extension UICollectionView {
+public extension UICollectionView {
     
     func registerNib<T: UIView>(withType viewType: T.Type,
                                 fromBundle bundle: Bundle? = nil,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal extension CharacterSet {
+public extension CharacterSet {
     /// Creates a CharacterSet from RFC 3986 allowed characters.
     ///
     /// RFC 3986 states that the following characters are "reserved" characters.

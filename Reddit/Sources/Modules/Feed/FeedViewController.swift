@@ -7,6 +7,8 @@
 
 import UIKit
 import Combine
+import Extensions
+import Platform
 
 final class FeedViewController: UIViewController, ViewModelContainer {
     

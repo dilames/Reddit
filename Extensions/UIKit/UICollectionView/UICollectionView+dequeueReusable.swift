@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UICollectionView {
+public extension UICollectionView {
     
     func dequeueReusableCell<T: UICollectionViewCell>(forType cellType: T.Type, for indexPath: IndexPath) -> T {
         let reusableIdentifier = String(describing: cellType)

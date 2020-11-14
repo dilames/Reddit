@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Extensions
 
 final public class HTTPSession {
     
@@ -20,7 +21,7 @@ final public class HTTPSession {
     private let urlSession: URLSession
     private let baseURL: URL
     
-    init(session: URLSession = URLSession.shared, baseURL: URL) {
+    public init(session: URLSession = URLSession.shared, baseURL: URL) {
         self.urlSession = session
         self.baseURL = baseURL
     }
@@ -28,7 +29,7 @@ final public class HTTPSession {
 }
 
 // MARK: Public - Requests
-extension HTTPSession {
+public extension HTTPSession {
     
     func httpResponsePublisher<T: HTTPEndpointDescribable>(_ endpoint: T) -> AnyPublisher<Response, Error> {
         return urlRequest(for: endpoint)
