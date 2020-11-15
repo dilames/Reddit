@@ -8,16 +8,31 @@
 import Combine
 import Foundation
 import Platform
+import Domain
 
 struct FeedViewModel: ViewModel {
     
+    typealias UseCases = HasRedditPostsUseCase
+    
     struct Output {
-        let posts: AnyPublisher<[String], Never>
+        let posts: AnyPublisher<[Child], Never>
     }
     
     func transform(_ input: Void) -> Output {
-        let postsPublisher = CurrentValueSubject<[String], Never>(["Hello", "I would like to try reload this CollectionView with Combine Subscriber"])
-        return Output(posts: postsPublisher.eraseToAnyPublisher())
+        let posts = useCases.redditEndpointUseCase.fetchTopRedditPosts()
+            .map { $0.data.children }
+            .catch { error in
+                
+                return Empty<[Child], Never>()
+            }
+            .eraseToAnyPublisher()
+        return Output(posts: posts)
+    }
+    
+    private let useCases: UseCases
+    
+    init(useCases: UseCases) {
+        self.useCases = useCases
     }
 
 }

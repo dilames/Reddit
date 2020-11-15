@@ -14,7 +14,7 @@ public enum API: HTTPEndpointDescribable {
     public var path: String {
         switch self {
         case .top:
-            return "top"
+            return "top.json"
         }
     }
     
@@ -40,7 +40,8 @@ public enum API: HTTPEndpointDescribable {
         let timeInterval = Date().timeIntervalSince1970 * 1000.0
         return [
             "User-Agent": "Reddit Client 1.0.0",
-            "X-Amzn-Trace-Id": "Root=1-\(Int(timeInterval.rounded()))-\(UUID().uuidString)"
+            "X-Amzn-Trace-Id": "Root=1-\(Int(timeInterval.rounded()))-\(UUID().uuidString)",
+            "Accept": "application/json"
         ]
     }
     

@@ -14,7 +14,7 @@ where
     Collection.Index == Int,
     Collection.Element: Hashable {
     
-    typealias CellConstuctor = (UICollectionView, IndexPath) -> UICollectionViewCell
+    typealias CellConstuctor = (UICollectionView, Collection?, IndexPath) -> UICollectionViewCell
     
     private var collection: Collection?
     private let cellConstructor: CellConstuctor
@@ -32,7 +32,7 @@ where
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return cellConstructor(collectionView, indexPath)
+        return cellConstructor(collectionView, collection, indexPath)
     }
     
     override func forwardingTarget(for aSelector: Selector!) -> Any? {

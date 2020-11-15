@@ -9,14 +9,19 @@ import UIKit
 import Combine
 import Extensions
 import Platform
+import Domain
 
 final class FeedViewController: UIViewController, ViewModelContainer {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private var flatCollectionDataSource = FlatCollectionViewDataSource<[String]>(
-        cellConstructor: { $0.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: $1) }
+    private var flatCollectionDataSource = FlatCollectionViewDataSource<[Child]>(
+        cellConstructor: { collectionView, collection, indexPath in
+            let cellView = collectionView.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: indexPath)
+            let item = collection![indexPath.row]
+            return cellView
+        }
     )
     
     override func viewDidLoad() {
@@ -30,6 +35,7 @@ final class FeedViewController: UIViewController, ViewModelContainer {
     func didSetViewModel(_ viewModel: FeedViewModel) {
         let output = viewModel.transform()
         output.posts
+            .receive(on: DispatchQueue.main)
             .bind(subscriber: flatCollectionDataSource.subscriber(for: collectionView))
             .store(in: &subscriptions)
     }

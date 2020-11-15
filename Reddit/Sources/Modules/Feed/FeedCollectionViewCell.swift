@@ -18,7 +18,6 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell {
     @IBOutlet private weak var timestampLabel: UILabel!
     @IBOutlet private weak var commentsLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -54,6 +53,11 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell {
         imageView.image = nil
         activityView.isHidden = false
         activityView.startAnimating()
+        
+        titleLabel.text = nil
+        authorLabel.text = nil
+        timestampLabel.text = nil
+        commentsLabel.text = nil
     }
     
     public func setImage(_ image: UIImage?) {
