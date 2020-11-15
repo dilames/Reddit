@@ -15,8 +15,6 @@ public class Endpoint<HTTPEndpoint: HTTPEndpointDescribable> {
         case objectMapping(Swift.Error, HTTPSession.Response)
     }
     
-    public typealias ErrorMapper<E> = (URLResponse)
-    
     private let httpSession: HTTPSession
     private let decoder: JSONDecoder
     
@@ -25,7 +23,7 @@ public class Endpoint<HTTPEndpoint: HTTPEndpointDescribable> {
         self.decoder = .iso8601
     }
     
-    func perform<D: Decodable>(_ httpEndpoint: HTTPEndpoint) -> AnyPublisher<D, Error> {
+    func perform<D: Decodable>(_ httpEndpoint: HTTPEndpoint) -> AnyPublisher<D, Swift.Error> {
         let httpSessionPublisher = httpSession
             .httpResponsePublisher(httpEndpoint)
             .mapError { Error.session($0) }
@@ -36,6 +34,7 @@ public class Endpoint<HTTPEndpoint: HTTPEndpointDescribable> {
                     .decode(type: D.self, decoder: decoder)
                     .mapError { Error.objectMapping($0, httpResponse) }
             }
+            .mapError { $0 as Swift.Error }
             .eraseToAnyPublisher()
     }
 }

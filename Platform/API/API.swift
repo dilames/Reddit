@@ -9,7 +9,7 @@ import Foundation
 
 public enum API: HTTPEndpointDescribable {
     
-    case top(descriptor: API.Listing)
+    case top(_ descriptor: API.Listing)
     
     public var path: String {
         switch self {

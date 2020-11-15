@@ -17,7 +17,7 @@ public enum Environment: Environmental {
     case production
     
     public var baseURL: URL {
-        return URL(string: "https://www.reddit.com/top")!
+        return URL(string: "https://www.reddit.com/")!
     }
     
 }

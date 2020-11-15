@@ -11,8 +11,9 @@ import Combine
 
 final class RedditEndpoint: Endpoint<API>, RedditEndpointUseCase {
     
-    func fetchTopRedditPosts() -> AnyPublisher<[String], Never> {
-        return CurrentValueSubject([""]).eraseToAnyPublisher()
+    func fetchTopRedditPosts() -> AnyPublisher<[String], Swift.Error> {
+        let descriptor = API.Listing(time: .all, direction: nil, count: 0, limit: 100, show: .all, subredditDetails: true)
+        return perform(.top(descriptor))
     }
     
 }

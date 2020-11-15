@@ -12,7 +12,7 @@ extension API {
     public struct Listing: URLParametersRepresentable, Hashable {
         
         let time: API.Time
-        let direction: API.Listing.Direction
+        let direction: API.Listing.Direction?
         let count: Int
         let limit: Int
         let show: API.Show
