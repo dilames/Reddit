@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Platform
 
 final class FeedCollectionViewCell: AnimatableCollectionViewCell {
     

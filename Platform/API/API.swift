@@ -13,7 +13,8 @@ public enum API: HTTPEndpointDescribable {
     
     public var path: String {
         switch self {
-        case .top(let time, let after, let before, let count, let limit, let show, let srDetail):
+//        (let time, let after, let before, let count, let limit, let show, let srDetail)
+        case .top:
             return "top"
         }
     }

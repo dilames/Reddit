@@ -11,7 +11,7 @@ import Platform
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private let httpSession = HTTPSession(baseURL: URL(string: "https://www.reddit.com/")!)
+    private lazy var platform: Platform = Platform(environment: .staging)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true

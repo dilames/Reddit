@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol Environmental {
+public protocol Environmental {
     var baseURL: URL { get }
 }
 
-enum Environment: Environmental {
+public enum Environment: Environmental {
     
     case staging
     case production
     
-    var baseURL: URL {
+    public var baseURL: URL {
         return URL(string: "https://www.reddit.com/top")!
     }
     
