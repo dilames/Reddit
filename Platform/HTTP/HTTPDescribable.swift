@@ -10,7 +10,7 @@ import struct Foundation.URL
 public protocol HTTPEndpointDescribable {
     var path: String { get }
     var method: HTTPMethod { get }
-//    var task: Task { get }
+    var task: HTTPTask { get }
     /// The headers to be used in the specific request.
     var headers: [String: String] { get }
     /// The headers to be used in all requests.

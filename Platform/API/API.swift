@@ -9,11 +9,10 @@ import Foundation
 
 public enum API: HTTPEndpointDescribable {
     
-    case top(time: Time, after: String?, before: String?, count: Int, limit: Int, show: Show, srDetail: Bool)
+    case top(descriptor: API.Listing)
     
     public var path: String {
         switch self {
-//        (let time, let after, let before, let count, let limit, let show, let srDetail)
         case .top:
             return "top"
         }
@@ -22,6 +21,14 @@ public enum API: HTTPEndpointDescribable {
     public var method: HTTPMethod {
         switch self {
         case .top: return .get
+        }
+    }
+    
+    public var task: HTTPTask {
+        switch self {
+        case .top(let descriptor):
+            return .requestParameters(parameters: descriptor.urlParameters,
+                                      encoding: URLEncoding())
         }
     }
     

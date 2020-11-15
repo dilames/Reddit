@@ -7,7 +7,6 @@
 
 import Foundation
 
-public enum Task {
-    case requestParameters(parameters: [String: Any], encoding: ParameterEncoding)
-    
+public enum HTTPTask {
+    case requestParameters(parameters: Parameters?, encoding: ParameterEncoding)
 }
