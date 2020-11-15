@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		623597E82561F4820002BADB /* AnyCancallableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623597E72561F4820002BADB /* AnyCancallableProxy.swift */; };
 		624D2317255F369E00DB39A2 /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 624D2307255F369E00DB39A2 /* Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		624D2326255F36C500DB39A2 /* Publisher+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6210F3F3255DF60300A7B964 /* Publisher+Bind.swift */; };
 		624D2327255F36C500DB39A2 /* UITableView+registerNibWithType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D8DF31255C1D4700C58613 /* UITableView+registerNibWithType.swift */; };
@@ -150,6 +151,7 @@
 		6210F3F9255E267100A7B964 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		6210F404255E4AC000A7B964 /* RedditEndpointUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditEndpointUseCase.swift; sourceTree = "<group>"; };
 		6210F418255E5D1000A7B964 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		623597E72561F4820002BADB /* AnyCancallableProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCancallableProxy.swift; sourceTree = "<group>"; };
 		624D2305255F369E00DB39A2 /* Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		624D2307255F369E00DB39A2 /* Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
 		624D2308255F369E00DB39A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		6210F3D4255DC61900A7B964 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				623597E72561F4820002BADB /* AnyCancallableProxy.swift */,
 				6210F3D5255DC62900A7B964 /* ViewModel.swift */,
 				6210F3D7255DC62900A7B964 /* ViewModelContainer.swift */,
 				6210F3D6255DC62900A7B964 /* ReusableViewModelContainer.swift */,
@@ -804,6 +807,7 @@
 				62BA7BC6255F5527008CAECB /* Platform.h in Sources */,
 				62BA7B63255F502A008CAECB /* ParameterEncoding.swift in Sources */,
 				62BA7B64255F502A008CAECB /* URLParametersRepresentable.swift in Sources */,
+				623597E82561F4820002BADB /* AnyCancallableProxy.swift in Sources */,
 				62BA7B65255F502A008CAECB /* URLParameterRepresentable.swift in Sources */,
 				62C237AB2561CEDA00D1FA14 /* Platform.swift in Sources */,
 				62BA7B66255F502A008CAECB /* HTTPSession.swift in Sources */,

@@ -9,16 +9,6 @@ import Combine
 import Foundation
 import UIKit
 
-@objc private class AnyCancallablesProxy: NSObject {
-    
-    private(set) var cancallables = NSMutableArray()
-    
-    init(_ cancallables: [Cancellable]) {
-        self.cancallables.addObjects(from: cancallables)
-    }
-    
-}
-
 private enum ViewModelContainerKeys {
     static var viewModel = "viewModel"
     static var subscriptions = "subscriptions"
@@ -65,8 +55,13 @@ private extension ViewModelContainer where Self: NSObject {
                 .map { _ in }
                 .sink { [unowned self] _ in didSetViewModel(viewModel) }
                 .store(in: &subscriptions)
+        } else {
+            Just(true)
+                .receive(on: OperationQueue.main)
+                .map { _ in }
+                .sink { [unowned self] _ in didSetViewModel(viewModel) }
+                .store(in: &subscriptions)
         }
-        
     }
     
 }
