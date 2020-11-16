@@ -8,6 +8,7 @@
 import UIKit
 import Platform
 import Domain
+import Combine
 
 final class ApplicationCoordinator {
     
@@ -22,7 +23,7 @@ final class ApplicationCoordinator {
     }
     
     func start() {
-        sceneDelegate.window?.rootViewController = feedViewController
+        sceneDelegate.window?.rootViewController = navigationController
         sceneDelegate.window?.makeKeyAndVisible()
     }
     
@@ -30,6 +31,12 @@ final class ApplicationCoordinator {
 
 // MARK: ViewControllers
 extension ApplicationCoordinator {
+    
+    var navigationController: UINavigationController {
+        let navigationController = UINavigationController(rootViewController: feedViewController)
+        navigationController.isNavigationBarHidden = true
+        return navigationController
+    }
     
     var feedViewController: FeedViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
