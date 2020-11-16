@@ -7,6 +7,9 @@
 
 import Foundation
 
-public typealias UseCases = HasRedditPostsUseCase
+public typealias UseCases =
+    HasRedditEndpointUseCase
+    & HasRedditPicturesUseCase
+    & HasRedditChronoUseCase
 
 public protocol UseCaseProvider: UseCases {}
