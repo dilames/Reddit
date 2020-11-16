@@ -9,9 +9,6 @@ import UIKit
 
 final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
-    var itemsPerColumn: Int = 1
-    var itemsPerPage: CGFloat = 1.5
-    
     override func prepare() {
         super.prepare()
         
@@ -35,10 +32,8 @@ final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let attributes = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes,
             let collectionView = collectionView
         else { return UICollectionViewLayoutAttributes() }
-        let itemsPerColumn = CGFloat(self.itemsPerColumn)
-        let lineSpacing = minimumLineSpacing * (itemsPerColumn - 1)
         attributes.frame.origin.x = sectionInset.left
-        attributes.frame.size.width = ((collectionView.bounds.width - sectionInset.left - sectionInset.right - lineSpacing) / itemsPerColumn)
+        attributes.frame.size.width = collectionView.bounds.width - sectionInset.left - sectionInset.right - minimumLineSpacing
         return attributes
     }
     
