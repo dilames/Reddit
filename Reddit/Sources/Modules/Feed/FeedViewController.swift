@@ -16,15 +16,16 @@ final class FeedViewController: UIViewController, ViewModelContainer {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private var flatCollectionDataSource = FlatCollectionViewDataSource<[Child]>(
+    private lazy var flatCollectionDataSource = FlatCollectionViewDataSource<[Child]>(
         cellConstructor: { collectionView, collection, indexPath in
             let cellView = collectionView.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: indexPath)
             let item = collection![indexPath.row]
             let viewModel = FeedCollectionCellViewModel(title: item.title,
                                                         author: item.author,
-                                                        date: Date(),
+                                                        date: item.createdUtc,
                                                         imageURL: nil,
-                                                        commentsNumber: item.numComments ?? 0)
+                                                        commentsNumber: item.numComments,
+                                                        useCases: self.viewModel.useCases)
             cellView.viewModel = viewModel
             return cellView
         }
@@ -46,12 +47,6 @@ final class FeedViewController: UIViewController, ViewModelContainer {
             .store(in: &subscriptions)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        guard let collectionViewFlowLayout = collectionView.collectionViewLayout as? FeedCollectionViewFlowLayout else { return }
-        collectionViewFlowLayout.estimatedItemSize = CGSize(width: view.bounds.size.width, height: 10)
-        collectionViewFlowLayout.invalidateLayout()
-        super.viewWillTransition(to: size, with: coordinator)
-    }
 }
 
 // MARK: UICollectionViewDelegate

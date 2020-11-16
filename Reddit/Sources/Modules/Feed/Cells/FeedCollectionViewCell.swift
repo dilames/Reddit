@@ -7,6 +7,7 @@
 
 import UIKit
 import Platform
+import Combine
 
 final class FeedCollectionViewCell: AnimatableCollectionViewCell, ReusableViewModelContainer {
     
@@ -42,7 +43,6 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell, ReusableViewMo
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        guard layer.shadowPath == .none else { return }
         layer.shadowPath = UIBezierPath(roundedRect: bounds,
                                         cornerRadius: contentView.layer.cornerRadius).cgPath
     }
@@ -66,6 +66,10 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell, ReusableViewMo
         titleLabel.text = viewModel.title
         authorLabel.text = viewModel.author
         commentsLabel.text = "\(viewModel.commentsNumber)"
+        viewModel.useCases.redditChrono
+            .dateComponentsPublisher(from: viewModel.date, interval: 1)
+            .assign(to: \.text, on: timestampLabel)
+            .store(in: &subscriptions)
     }
     
     private func setImage(_ image: UIImage?) {

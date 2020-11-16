@@ -12,14 +12,14 @@ import Domain
 
 struct FeedViewModel: ViewModel {
     
-    typealias UseCases = HasRedditPostsUseCase
+    typealias UseCases = HasRedditEndpointUseCase & HasRedditChronoUseCase
     
     struct Output {
         let posts: AnyPublisher<[Child], Never>
     }
     
     func transform(_ input: Void) -> Output {
-        let posts = useCases.redditEndpointUseCase.fetchTopRedditPosts()
+        let posts = useCases.redditEndpoint.fetchTopRedditPosts()
             .map { $0.data.children.compactMap { $0.data } }
             .catch { error in
                 return Empty<[Child], Never>()
@@ -28,7 +28,7 @@ struct FeedViewModel: ViewModel {
         return Output(posts: posts)
     }
     
-    private let useCases: UseCases
+    let useCases: UseCases
     
     init(useCases: UseCases) {
         self.useCases = useCases
