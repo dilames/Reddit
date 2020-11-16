@@ -20,21 +20,20 @@ public class Endpoint<HTTPEndpoint: HTTPEndpointDescribable> {
     
     public init(httpSession: HTTPSession) {
         self.httpSession = httpSession
-        self.decoder = .iso8601
+        self.decoder = .secondsSince1970
     }
     
     func perform<D: Decodable>(_ httpEndpoint: HTTPEndpoint) -> AnyPublisher<D, Swift.Error> {
-        let httpSessionPublisher = httpSession
+        return httpSession
             .httpResponsePublisher(httpEndpoint)
             .mapError { Error.session($0) }
-        return httpSessionPublisher
             .flatMap { [unowned self] (httpResponse) in
-                httpSessionPublisher
+                Just(httpResponse)
                     .map(\.data)
                     .decode(type: D.self, decoder: decoder)
                     .mapError { Error.objectMapping($0, httpResponse) }
             }
-            .mapError { $0 as Swift.Error }
             .eraseToAnyPublisher()
     }
+    
 }

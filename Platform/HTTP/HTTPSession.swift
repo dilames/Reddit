@@ -33,12 +33,22 @@ public extension HTTPSession {
     
     func httpResponsePublisher<T: HTTPEndpointDescribable>(_ endpoint: T) -> AnyPublisher<Response, Error> {
         return urlRequest(for: endpoint)
-            .map { [unowned self] in
+            .flatMap { [unowned self] in
                 urlSession.dataTaskPublisher(for: $0)
                     .mapError { Error.urlError($0) }
                     .eraseToAnyPublisher()
             }
-            .switchToLatest()
+            .eraseToAnyPublisher()
+    }
+    
+    func httpDataPublisher<T: HTTPEndpointDescribable>(_ endpoint: T) -> AnyPublisher<Data, Error> {
+        return urlRequest(for: endpoint)
+            .flatMap { [unowned self] in
+                urlSession.downloadTaskPublisher(for: $0)
+                    .map { $0.data }
+                    .mapError { Error.urlError($0) }
+                    .eraseToAnyPublisher()
+            }
             .eraseToAnyPublisher()
     }
     
