@@ -27,7 +27,8 @@ public enum API: HTTPEndpointDescribable {
     public var task: HTTPTask {
         switch self {
         case .top(let descriptor):
-            return .requestParameters(parameters: descriptor.urlParameters,
+            let parameters = descriptor.urlParameters?.merging(["raw_json": "1"], uniquingKeysWith: { _ = $0; return $1 })
+            return .requestParameters(parameters: parameters,
                                       encoding: URLEncoding())
         }
     }

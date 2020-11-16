@@ -11,6 +11,7 @@ import UIKit
 final class FlatCollectionViewDataSource<Collection>: NSObject, UICollectionViewDataSource
 where
     Collection: RandomAccessCollection,
+    Collection: RangeReplaceableCollection,
     Collection.Index == Int,
     Collection.Element: Hashable {
     
@@ -44,8 +45,18 @@ where
             receiveSubscription: { $0.request(.unlimited) },
             receiveValue: { [weak self] in
                 guard let self = self else { return .none }
-                self.collection = $0
-                collectionView.reloadData()
+                let oldCollection = self.collection ?? Collection()
+                let indexPathsForInsertions = $0.enumerated().compactMap { IndexPath(item: $0.offset + oldCollection.count, section: 0) }
+                
+                if self.collection != nil {
+                    self.collection?.append(contentsOf: $0)
+                } else {
+                    self.collection = $0
+                }
+                
+                collectionView.performBatchUpdates({
+                    collectionView.insertItems(at: indexPathsForInsertions)
+                }, completion: nil)
                 return .unlimited
             }
         )

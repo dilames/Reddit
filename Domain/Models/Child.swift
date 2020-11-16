@@ -13,9 +13,11 @@ public struct Child: Codable, Hashable {
     public let author: String
     public let numComments: Int
     public let createdUtc: Date
+    public let thumbnail: URL
+    public let url: URL
     
     private enum CodingKeys: String, CodingKey {
-        case title, author
+        case title, author, thumbnail, url
         case createdUtc = "created_utc"
         case numComments = "num_comments"
     }

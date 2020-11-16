@@ -22,6 +22,9 @@
                     </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-h2-w0t">
                         <rect key="frame" x="0.0" y="0.0" width="501" height="293"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="360" id="YSX-cU-Wya"/>
+                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fr-Ac-gdj" userLabel="Header View">
                         <rect key="frame" x="0.0" y="0.0" width="501" height="76"/>

@@ -46,7 +46,7 @@ extension URLSession {
         private var subscriber: SubscriberType?
         private weak var session: URLSession!
         private var request: URLRequest!
-        private var task: URLSessionDownloadTask!
+        private var task: URLSessionDownloadTask?
         private var fileManager: FileManager
         
         init(subscriber: SubscriberType, urlSession: URLSession, urlRequest: URLRequest, fileManager: FileManager = .default) {
@@ -83,12 +83,11 @@ extension URLSession {
                     return
                 }
                 
-                let fileUrl = cachesDirectory.appendingPathComponent(url.absoluteString)
+                let fileUrl = cachesDirectory.appendingPathComponent((UUID().uuidString))
                 
                 do {
                     try FileManager.default.moveItem(atPath: url.path, toPath: fileUrl.path)
-                    let data = try Data(contentsOf: fileUrl)
-                    _ = self?.subscriber?.receive((data: data, fileUrl: fileUrl, response: urlResponse))
+                    _ = self?.subscriber?.receive((data: try Data(contentsOf: fileUrl), fileUrl: fileUrl, response: urlResponse))
                     self?.subscriber?.receive(completion: .finished)
                 }
                 catch {
@@ -96,11 +95,11 @@ extension URLSession {
                 }
                 
             }
-            self.task.resume()
+            self.task?.resume()
         }
         
         func cancel() {
-            self.task.cancel()
+            self.task?.cancel()
         }
         
     }

@@ -12,14 +12,24 @@ import Domain
 
 struct FeedCollectionCellViewModel: ViewModel {
     
-    typealias UseCases = HasRedditChronoUseCase
+    typealias UseCases = HasRedditChronoUseCase & HasRedditPicturesUseCase
+    
+    struct Output {
+        let pictureDataPublisher: AnyPublisher<Data, Swift.Error>
+        let dateComponentsPublisher: AnyPublisher<String?, Never>
+    }
+    
+    let useCases: UseCases
     
     let title: String
     let author: String
     let date: Date
-    let imageURL: URL?
+    let imageURL: URL
     let commentsNumber: Int
     
-    let useCases: UseCases
+    func transform(_ input: ()) -> Output {
+        return Output(pictureDataPublisher: useCases.redditPictures.pictureDataPublisher(for: imageURL),
+                      dateComponentsPublisher: useCases.redditChrono.dateComponentsPublisher(from: date, interval: 1))
+    }
     
 }

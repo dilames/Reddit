@@ -18,6 +18,15 @@ extension API {
         let show: API.Show
         let subredditDetails: Bool
         
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(time, forKey: .time)
+            try container.encode(count, forKey: .count)
+            try container.encode(limit, forKey: .limit)
+            try container.encode(show, forKey: .show)
+            try container.encode(subredditDetails, forKey: .subredditDetails)
+            try direction?.encode(to: encoder)
+        }
     }
     
 }
@@ -26,7 +35,6 @@ extension API {
 extension API.Listing {
     
     private enum CodingKeys: String, CodingKey {
-        case direction = ""
         case time = "t"
         case show
         case count

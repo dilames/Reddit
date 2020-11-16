@@ -63,18 +63,23 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell, ReusableViewMo
     }
     
     func didSetViewModel(_ viewModel: FeedCollectionCellViewModel) {
+        let output = viewModel.transform()
         titleLabel.text = viewModel.title
         authorLabel.text = viewModel.author
         commentsLabel.text = "\(viewModel.commentsNumber)"
-        viewModel.useCases.redditChrono
-            .dateComponentsPublisher(from: viewModel.date, interval: 1)
+        
+        output.dateComponentsPublisher
+            .receive(on: DispatchQueue.main)
             .assign(to: \.text, on: timestampLabel)
             .store(in: &subscriptions)
-    }
-    
-    private func setImage(_ image: UIImage?) {
-        activityView.isHidden = true
-        imageView.image = image
+        
+        output.pictureDataPublisher
+            .map { UIImage(data: $0) }
+            .receive(on: DispatchQueue.main)
+            .replaceError(with: UIImage(named: "test-image")!)
+            .assign(to: \.image, on: imageView)
+            .store(in: &subscriptions)
+        
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

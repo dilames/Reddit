@@ -28,7 +28,7 @@ public struct URLEncoding: ParameterEncoding {
             urlComponents.queryItems = parameters.map {
                 URLQueryItem(
                     name: $0.key,
-                    value: "\($0)".addingPercentEncoding(withAllowedCharacters: .rfc3986QueryAllowed)
+                    value: "\($0.value)".addingPercentEncoding(withAllowedCharacters: .rfc3986QueryAllowed)
                 )
             }
             urlRequest.url = urlComponents.url

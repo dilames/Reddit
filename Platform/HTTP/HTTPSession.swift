@@ -41,8 +41,9 @@ public extension HTTPSession {
             .eraseToAnyPublisher()
     }
     
-    func httpDataPublisher<T: HTTPEndpointDescribable>(_ endpoint: T) -> AnyPublisher<Data, Error> {
-        return urlRequest(for: endpoint)
+    func imageDataPublisher(_ url: URL) -> AnyPublisher<Data, Error> {
+        let urlRequest = URLRequest(url: url)
+        return Just(urlRequest)
             .flatMap { [unowned self] in
                 urlSession.downloadTaskPublisher(for: $0)
                     .map { $0.data }
@@ -59,12 +60,20 @@ private extension HTTPSession {
     
     func urlRequest<T: HTTPEndpointDescribable>(for endpoint: T) -> AnyPublisher<URLRequest, Error> {
         
-        var urlRequest = URLRequest(url: baseURL.appendingPathComponent(endpoint.path))
+        let url = endpoint.baseURL ?? baseURL
+        var urlRequest = URLRequest(url: url.appendingPathComponent(endpoint.path))
         
         urlRequest.httpMethod = endpoint.method.rawValue
         urlRequest.allHTTPHeaderFields = endpoint.defaultHeaders + endpoint.headers
         
-        return CurrentValueSubject(urlRequest).eraseToAnyPublisher()
+        return Just(urlRequest)
+            .setFailureType(to: Error.self)
+            .tryMap {
+                guard case let .requestParameters(parameters, encoding) = endpoint.task else { return $0 }
+                return try encoding.encode(urlRequest: $0, with: parameters)
+            }
+            .mapError { $0 as? HTTPSession.Error ?? .missingUrl }
+            .eraseToAnyPublisher()
     }
     
     

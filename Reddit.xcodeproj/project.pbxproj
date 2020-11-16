@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		620934CD256229C000F2E54D /* URLSession+DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934CC256229C000F2E54D /* URLSession+DownloadTask.swift */; };
-		620934D525622CA800F2E54D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934D425622CA800F2E54D /* ImageService.swift */; };
-		620934D925622CFD00F2E54D /* RedditImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934D825622CFD00F2E54D /* RedditImageUseCase.swift */; };
+		620934D525622CA800F2E54D /* RedditPicturesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934D425622CA800F2E54D /* RedditPicturesService.swift */; };
+		620934D925622CFD00F2E54D /* RedditPicturesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934D825622CFD00F2E54D /* RedditPicturesUseCase.swift */; };
 		620934E125623ABE00F2E54D /* RedditChronoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934E025623ABE00F2E54D /* RedditChronoUseCase.swift */; };
 		620934E525623AC900F2E54D /* ChronoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620934E425623AC900F2E54D /* ChronoService.swift */; };
 		623597E82561F4820002BADB /* AnyCancallableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623597E72561F4820002BADB /* AnyCancallableProxy.swift */; };
@@ -145,8 +145,8 @@
 
 /* Begin PBXFileReference section */
 		620934CC256229C000F2E54D /* URLSession+DownloadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+DownloadTask.swift"; sourceTree = "<group>"; };
-		620934D425622CA800F2E54D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
-		620934D825622CFD00F2E54D /* RedditImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditImageUseCase.swift; sourceTree = "<group>"; };
+		620934D425622CA800F2E54D /* RedditPicturesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPicturesService.swift; sourceTree = "<group>"; };
+		620934D825622CFD00F2E54D /* RedditPicturesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPicturesUseCase.swift; sourceTree = "<group>"; };
 		620934E025623ABE00F2E54D /* RedditChronoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditChronoUseCase.swift; sourceTree = "<group>"; };
 		620934E425623AC900F2E54D /* ChronoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronoService.swift; sourceTree = "<group>"; };
 		6210F3B0255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 			children = (
 				627E6F7B255AF1CD0022A654 /* UseCaseProvider.swift */,
 				6210F404255E4AC000A7B964 /* RedditEndpointUseCase.swift */,
-				620934D825622CFD00F2E54D /* RedditImageUseCase.swift */,
+				620934D825622CFD00F2E54D /* RedditPicturesUseCase.swift */,
 				620934E025623ABE00F2E54D /* RedditChronoUseCase.swift */,
 			);
 			path = UseCases;
@@ -447,7 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				62C237C62561D16F00D1FA14 /* RedditEndpoint.swift */,
-				620934D425622CA800F2E54D /* ImageService.swift */,
+				620934D425622CA800F2E54D /* RedditPicturesService.swift */,
 				620934E425623AC900F2E54D /* ChronoService.swift */,
 			);
 			path = Services;
@@ -831,7 +831,7 @@
 				62BA7B65255F502A008CAECB /* URLParameterRepresentable.swift in Sources */,
 				62C237AB2561CEDA00D1FA14 /* Platform.swift in Sources */,
 				62BA7B66255F502A008CAECB /* HTTPSession.swift in Sources */,
-				620934D525622CA800F2E54D /* ImageService.swift in Sources */,
+				620934D525622CA800F2E54D /* RedditPicturesService.swift in Sources */,
 				62BA7B67255F502A008CAECB /* HTTPMethod.swift in Sources */,
 				62C237C72561D16F00D1FA14 /* RedditEndpoint.swift in Sources */,
 				62BA7B68255F502A008CAECB /* HTTPTask.swift in Sources */,
@@ -855,7 +855,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C237F22561ED7000D1FA14 /* Meta.swift in Sources */,
-				620934D925622CFD00F2E54D /* RedditImageUseCase.swift in Sources */,
+				620934D925622CFD00F2E54D /* RedditPicturesUseCase.swift in Sources */,
 				62BA7B6E255F504C008CAECB /* UseCaseProvider.swift in Sources */,
 				62C237EC2561ED0C00D1FA14 /* Response.swift in Sources */,
 				62C237F62561EDC000D1FA14 /* Child.swift in Sources */,
