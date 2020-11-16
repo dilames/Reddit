@@ -15,7 +15,7 @@ final class RedditEndpoint: Endpoint<API>, RedditEndpointUseCase {
     
     private func fetchPage(_ direction: API.Listing.Direction?) -> AnyPublisher<[Child], Swift.Error> {
         typealias DecodingType = Response<Meta<Response<Child>>>
-        let descriptor = API.Listing(time: .all, direction: direction, count: 0, limit: 100, show: .all, subredditDetails: true)
+        let descriptor = API.Listing(time: .all, direction: direction, count: 0, limit: 25, show: .all, subredditDetails: true)
         let response: AnyPublisher<DecodingType, Swift.Error> = perform(.top(descriptor))
         return response
             .handleEvents(receiveOutput: { self.tokenForNextPage = $0.data.after })

@@ -20,7 +20,7 @@
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="qrX-xC-xKG">
                         <rect key="frame" x="240.5" y="136.5" width="20" height="20"/>
                     </activityIndicatorView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-h2-w0t">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-h2-w0t">
                         <rect key="frame" x="0.0" y="0.0" width="501" height="293"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="360" id="YSX-cU-Wya"/>

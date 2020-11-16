@@ -22,6 +22,18 @@ struct FeedViewModel: ViewModel {
         let indexPath: AnyPublisher<Int, Never>
     }
     
+    struct Handlers {
+        let openDetails: PassthroughSubject<(URL, FeedCollectionViewCell), Never>
+    }
+    
+    let handlers: Handlers
+    let useCases: UseCases
+    
+    init(useCases: UseCases, handlers: Handlers) {
+        self.useCases = useCases
+        self.handlers = handlers
+    }
+    
     func transform(_ input: Input) -> Output {
         
         let fetchFirstPage = useCases.redditEndpoint.fetchFirstPage()
@@ -35,12 +47,6 @@ struct FeedViewModel: ViewModel {
             .eraseToAnyPublisher()
         
         return Output(collection: collection)
-    }
-    
-    let useCases: UseCases
-    
-    init(useCases: UseCases) {
-        self.useCases = useCases
     }
 
 }

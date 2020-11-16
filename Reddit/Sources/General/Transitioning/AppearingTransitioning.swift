@@ -10,7 +10,7 @@ import UIKit
 final class AppearingTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
     
     private let viewCell: UICollectionViewCell
-    private let animationDuration: TimeInterval = 0.25
+    private let animationDuration: TimeInterval = 0.60
     
     private var currentAnimator: UIViewImplicitlyAnimating?
     
@@ -42,7 +42,7 @@ final class AppearingTransitioning: NSObject, UIViewControllerAnimatedTransition
         currentAnimator?.addAnimations? {
             let dx = toViewController.view.frame.width / sourceFrame.width
             let dy = toViewController.view.frame.height / sourceFrame.height
-            self.viewCell.center = toViewController.view.center.applying(.init(translationX: contentOffset.x, y: 0))
+            self.viewCell.center = toViewController.view.center.applying(.init(translationX: contentOffset.x, y: contentOffset.y))
             self.viewCell.transform = .init(scaleX: dx, y: dy)
             self.viewCell.layer.cornerRadius = 0
         }

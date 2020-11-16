@@ -52,7 +52,7 @@ final class FeedViewController: UIViewController, ViewModelContainer {
             .map { CGPoint(x: $0.midX, y: $0.midY) }
             .compactMap { [weak self] in self?.collectionView.indexPathForItem(at: $0 ) }
             .map(\.row)
-            .filter { $0 == self.collectionView.numberOfItems(inSection: 0) - 50 }
+            .filter { $0 == self.collectionView.numberOfItems(inSection: 0) / 2 }
             .debounce(for: 2.0, scheduler: DispatchQueue.main)
             .eraseToAnyPublisher()
         
@@ -75,11 +75,9 @@ final class FeedViewController: UIViewController, ViewModelContainer {
 extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let viewModel = layersViewModels[indexPath.row]
-        guard let viewCell = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
-        //        viewController.modalPresentationStyle = .custom
-        //        viewController.modalPresentationCapturesStatusBarAppearance = true
-        //        viewController.transitioningDelegate = transition
-        //        present(viewController, animated: true, completion: nil)
+        guard
+            let viewCell = collectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell,
+            let viewModel = viewCell.viewModel else { return }
+        self.viewModel.handlers.openDetails.send((viewModel.imageURL, viewCell))
     }
 }

@@ -85,6 +85,7 @@
 		62C237EC2561ED0C00D1FA14 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C237EB2561ED0C00D1FA14 /* Response.swift */; };
 		62C237F22561ED7000D1FA14 /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C237F12561ED7000D1FA14 /* Meta.swift */; };
 		62C237F62561EDC000D1FA14 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C237F52561EDC000D1FA14 /* Child.swift */; };
+		62C38E4A2562EFF50068A675 /* TransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C38E492562EFF50068A675 /* TransitioningController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,7 @@
 		62C237EB2561ED0C00D1FA14 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		62C237F12561ED7000D1FA14 /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		62C237F52561EDC000D1FA14 /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
+		62C38E492562EFF50068A675 /* TransitioningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningController.swift; sourceTree = "<group>"; };
 		62D8DEFA255C093D00C58613 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		62D8DEFE255C09A500C58613 /* AppearingTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearingTransitioning.swift; sourceTree = "<group>"; };
 		62D8DF01255C09CC00C58613 /* DisappearingTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingTransitioning.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				62D8DEFA255C093D00C58613 /* Transition.swift */,
 				62D8DEFE255C09A500C58613 /* AppearingTransitioning.swift */,
 				62D8DF01255C09CC00C58613 /* DisappearingTransitioning.swift */,
+				62C38E492562EFF50068A675 /* TransitioningController.swift */,
 			);
 			path = Transitioning;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				62BA7BBA255F550D008CAECB /* Platform.h in Sources */,
 				62BA7B81255F52C7008CAECB /* AppDelegate.swift in Sources */,
 				62BA7B82255F52C7008CAECB /* SceneDelegate.swift in Sources */,
+				62C38E4A2562EFF50068A675 /* TransitioningController.swift in Sources */,
 				62BA7B83255F52C7008CAECB /* ApplicationCoordinator.swift in Sources */,
 				62BA7B84255F52C7008CAECB /* Transition.swift in Sources */,
 				62BA7B85255F52C7008CAECB /* AppearingTransitioning.swift in Sources */,

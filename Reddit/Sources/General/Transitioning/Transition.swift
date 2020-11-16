@@ -5,13 +5,7 @@
 //  Created by Andrew Chersky on 11.11.2020.
 //
 
-import protocol UIKit.UIViewControllerTransitioningDelegate
-import protocol UIKit.UIViewControllerAnimatedTransitioning
-
-import class UIKit.UIViewController
-import class UIKit.NSObject
-
-import class UIKit.UICollectionViewCell
+import UIKit
 
 final class Transition: NSObject, UIViewControllerTransitioningDelegate {
     
@@ -30,6 +24,10 @@ final class Transition: NSObject, UIViewControllerTransitioningDelegate {
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DisappearingTransitioning(viewCell: cell)
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return TransitionController(presentedViewController: presented, presenting: presenting)
     }
     
 }

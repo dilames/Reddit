@@ -10,7 +10,7 @@ import UIKit
 final class DisappearingTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
     
     private let viewCell: UICollectionViewCell
-    private let animationDuration: TimeInterval = 0.25
+    private let animationDuration: TimeInterval = 0.60
     
     private var currentAnimator: UIViewImplicitlyAnimating?
     
@@ -40,8 +40,8 @@ final class DisappearingTransitioning: NSObject, UIViewControllerAnimatedTransit
         currentAnimator?.addAnimations? {
             let dx = toFrame.width / fromViewController.view.frame.width
             let dy = toFrame.height / fromViewController.view.frame.height
+            containerView.center = self.viewCell.center.applying(.init(translationX: -contentOffset.x, y: -contentOffset.y))
             containerView.transform = .init(scaleX: dx, y: dy)
-            containerView.center = self.viewCell.center.applying(.init(translationX: -contentOffset.x, y: 0))
             containerView.layer.cornerRadius = self.viewCell.layer.cornerRadius * fromViewController.view.frame.width / toFrame.width
         }
         

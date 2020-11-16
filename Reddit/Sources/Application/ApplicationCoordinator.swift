@@ -16,6 +16,9 @@ final class ApplicationCoordinator {
     private unowned var appDelegate: AppDelegate
     private var useCaseProvider: UseCaseProvider
     
+    private var transition: Transition?
+    private var subscriptions = Set<AnyCancellable>()
+    
     init(sceneDelegate: SceneDelegate, appDelegate: AppDelegate) {
         self.sceneDelegate = sceneDelegate
         self.appDelegate = appDelegate
@@ -41,7 +44,12 @@ extension ApplicationCoordinator {
     var feedViewController: FeedViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         let viewController = storyboard.instantiateViewController(identifier: "FeedViewController") as FeedViewController
-        let viewModel = FeedViewModel(useCases: useCaseProvider)
+        let openUrlSubject = PassthroughSubject<(URL, FeedCollectionViewCell), Never>()
+        openUrlSubject
+            .sink { [unowned self] in openFeedDetails(url: $0.0, fromCell: $0.1) }
+            .store(in: &subscriptions)
+        let handlers = FeedViewModel.Handlers(openDetails: openUrlSubject)
+        let viewModel = FeedViewModel(useCases: useCaseProvider, handlers: handlers)
         viewController.viewModel = viewModel
         return viewController
     }
@@ -52,6 +60,20 @@ extension ApplicationCoordinator {
         let viewModel = FeedDetailsViewModel(useCases: useCaseProvider, url: url)
         viewController.viewModel = viewModel
         return viewController
+    }
+    
+}
+
+// MARK: Handlers
+extension ApplicationCoordinator {
+    
+    func openFeedDetails(url: URL, fromCell cell: FeedCollectionViewCell) {
+        transition = Transition(cell: cell)
+        let viewController = feedDetailsViewController(url: url)
+        viewController.modalPresentationStyle = .custom
+        viewController.modalPresentationCapturesStatusBarAppearance = true
+        viewController.transitioningDelegate = transition
+        sceneDelegate.window?.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     
 }
