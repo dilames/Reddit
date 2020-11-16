@@ -9,11 +9,10 @@ import Foundation
 
 public struct Child: Codable, Hashable {
     
-    public let name: String?
-    public let title: String?
-    public let subredditNamePrefixed: String?
-    public let url: URL?
-    public let author: String?
+    public let name: String
+    public let title: String
+    public let url: URL
+    public let author: String
     public let numComments: Int?
     
 }
