@@ -11,22 +11,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedCollectonViewCell" customModule="Reddit" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCollectionViewCell" id="No9-a9-BnR" customClass="FeedCollectionViewCell" customModule="Reddit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="501" height="531"/>
+            <rect key="frame" x="0.0" y="0.0" width="501" height="293"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rps-Wr-NEs">
-                <rect key="frame" x="0.0" y="0.0" width="501" height="531"/>
+                <rect key="frame" x="0.0" y="0.0" width="501" height="293"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="qrX-xC-xKG">
-                        <rect key="frame" x="240.5" y="255.5" width="20" height="20"/>
+                        <rect key="frame" x="240.5" y="136.5" width="20" height="20"/>
                     </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-h2-w0t">
-                        <rect key="frame" x="0.0" y="0.0" width="501" height="531"/>
+                        <rect key="frame" x="0.0" y="0.0" width="501" height="293"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fr-Ac-gdj" userLabel="Header View">
                         <rect key="frame" x="0.0" y="0.0" width="501" height="76"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="TITLE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g10-s1-Nus">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="TITLE" lineBreakMode="wordWrap" numberOfLines="99" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g10-s1-Nus">
                                 <rect key="frame" x="24" y="20" width="419" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V23-TI-uAL" userLabel="Footer View">
-                        <rect key="frame" x="0.0" y="454" width="501" height="77"/>
+                        <rect key="frame" x="0.0" y="216" width="501" height="77"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Z3m-Bj-8K7" userLabel="Meta Stack View">
                                 <rect key="frame" x="24" y="13" width="116.5" height="51"/>
@@ -99,20 +99,21 @@
                     <constraint firstAttribute="bottom" secondItem="V23-TI-uAL" secondAttribute="bottom" id="YfI-74-4hH"/>
                     <constraint firstItem="9fr-Ac-gdj" firstAttribute="leading" secondItem="Rps-Wr-NEs" secondAttribute="leading" id="bjr-DA-2Qz"/>
                     <constraint firstItem="ezZ-h2-w0t" firstAttribute="top" secondItem="Rps-Wr-NEs" secondAttribute="top" id="iAV-cB-otG"/>
+                    <constraint firstItem="V23-TI-uAL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9fr-Ac-gdj" secondAttribute="bottom" priority="500" constant="250" id="kph-Wa-GOg"/>
                     <constraint firstAttribute="trailing" secondItem="V23-TI-uAL" secondAttribute="trailing" id="mDv-DT-NSo"/>
                     <constraint firstItem="9fr-Ac-gdj" firstAttribute="top" secondItem="Rps-Wr-NEs" secondAttribute="top" id="xpV-BM-AUg"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="501" height="531"/>
+            <size key="customSize" width="501" height="293"/>
             <connections>
                 <outlet property="activityView" destination="qrX-xC-xKG" id="xgF-PR-89U"/>
                 <outlet property="authorLabel" destination="hTn-cf-TyJ" id="mYm-hx-9UJ"/>
                 <outlet property="commentsLabel" destination="1d1-zL-c3v" id="RO0-6G-lN0"/>
                 <outlet property="imageView" destination="ezZ-h2-w0t" id="boz-Sk-Hcu"/>
                 <outlet property="timestampLabel" destination="5Rw-1m-O4p" id="beX-ao-NPi"/>
-                <outlet property="titleLabel" destination="hTn-cf-TyJ" id="1WN-dt-lz5"/>
+                <outlet property="titleLabel" destination="g10-s1-Nus" id="k6o-kG-Ig4"/>
             </connections>
-            <point key="canvasLocation" x="-554.0625" y="219.19014084507043"/>
+            <point key="canvasLocation" x="-554.0625" y="296.30281690140845"/>
         </collectionViewCell>
     </objects>
     <resources>

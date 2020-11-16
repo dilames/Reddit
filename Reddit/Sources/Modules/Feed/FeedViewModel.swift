@@ -20,9 +20,8 @@ struct FeedViewModel: ViewModel {
     
     func transform(_ input: Void) -> Output {
         let posts = useCases.redditEndpointUseCase.fetchTopRedditPosts()
-            .map { $0.data.children }
+            .map { $0.data.children.compactMap { $0.data } }
             .catch { error in
-                
                 return Empty<[Child], Never>()
             }
             .eraseToAnyPublisher()

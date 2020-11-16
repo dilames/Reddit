@@ -8,45 +8,51 @@
 import UIKit
 
 final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
-
-    var columnsCount: Int = 1
+    
+    var itemsPerColumn: Int = 1
     var itemsPerPage: CGFloat = 1.5
-    
-    var verticalItemSpacing: CGFloat = 20
-    var horizontalItemSpacing: CGFloat = 20
-    
-    var headerHeight: CGFloat = 0.0
-    
-    var itemInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
     
     override func prepare() {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
         
-        minimumLineSpacing = verticalItemSpacing
-        minimumInteritemSpacing = horizontalItemSpacing
-        headerReferenceSize = CGSize(width: collectionView.bounds.width, height: headerHeight)
-        sectionInset = itemInsets
+        minimumLineSpacing = 20.0
+        minimumInteritemSpacing = 20.0
+        headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 0.0)
+        sectionInset = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
+        estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         
-        let minWidth = min(collectionView.frame.width, collectionView.frame.width)
-        let estimatedItemWidth = (minWidth - verticalItemSpacing * CGFloat(columnsCount - 1)
-            - sectionInset.left - sectionInset.right) / CGFloat(columnsCount)
-        let collectionContentHeight = collectionView.bounds.height
-            - collectionView.safeAreaInsets.top - collectionView.safeAreaInsets.bottom
-            - sectionInset.top - sectionInset.bottom
-        let itemHeight = collectionContentHeight / itemsPerPage
-        
-        var itemSize: CGSize = .zero
-        itemSize.width = estimatedItemWidth
-        itemSize.height = itemHeight
-        
-        self.itemSize = itemSize
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         guard let collectionView = collectionView else { return false }
         return newBounds.size != collectionView.bounds.size
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard
+            let attributes = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes,
+            let collectionView = collectionView
+        else { return UICollectionViewLayoutAttributes() }
+        let itemsPerColumn = CGFloat(self.itemsPerColumn)
+        let lineSpacing = minimumLineSpacing * (itemsPerColumn - 1)
+        attributes.frame.origin.x = sectionInset.left
+        attributes.frame.size.width = ((collectionView.bounds.width - sectionInset.left - sectionInset.right - lineSpacing) / itemsPerColumn)
+        return attributes
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return super.layoutAttributesForElements(in: rect)?
+            .compactMap { $0.copy() as? UICollectionViewLayoutAttributes }
+            .map {
+                guard
+                    $0.representedElementCategory == .cell,
+                    let frame = layoutAttributesForItem(at: $0.indexPath)?.frame
+                else { return $0 }
+                $0.frame = frame
+                return $0
+            }
     }
     
 }

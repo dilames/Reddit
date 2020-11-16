@@ -8,7 +8,7 @@
 import UIKit
 import Platform
 
-final class FeedCollectionViewCell: AnimatableCollectionViewCell {
+final class FeedCollectionViewCell: AnimatableCollectionViewCell, ReusableViewModelContainer {
     
     @IBOutlet private weak var activityView: UIActivityIndicatorView!
     @IBOutlet private weak var imageView: UIImageView!
@@ -58,11 +58,25 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell {
         authorLabel.text = nil
         timestampLabel.text = nil
         commentsLabel.text = nil
+        
+        layer.shadowPath = nil
     }
     
-    public func setImage(_ image: UIImage?) {
+    func didSetViewModel(_ viewModel: FeedCollectionCellViewModel) {
+        titleLabel.text = viewModel.title
+        authorLabel.text = viewModel.author
+        commentsLabel.text = "\(viewModel.commentsNumber)"
+    }
+    
+    private func setImage(_ image: UIImage?) {
         activityView.isHidden = true
         imageView.image = image
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        titleLabel.preferredMaxLayoutWidth = layoutAttributes.frame.width
+        layoutAttributes.frame.size.height = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        return layoutAttributes
     }
     
 }

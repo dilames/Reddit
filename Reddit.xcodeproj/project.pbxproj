@@ -269,6 +269,16 @@
 			path = Combine;
 			sourceTree = "<group>";
 		};
+		623597ED256202360002BADB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				62BA7BE6255F590D008CAECB /* FeedCollectionCellViewModel.swift */,
+				62C0CCD6255D88B5003D1A84 /* FeedCollectionViewCell.swift */,
+				62C0CCD7255D88B5003D1A84 /* FeedCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		627E6F3A255AE01E0022A654 = {
 			isa = PBXGroup;
 			children = (
@@ -495,12 +505,10 @@
 		62D8DF0F255C0BC200C58613 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				6210F3DC255DC71B00A7B964 /* FeedViewModel.swift */,
-				62C0CCD6255D88B5003D1A84 /* FeedCollectionViewCell.swift */,
-				62C0CCD7255D88B5003D1A84 /* FeedCollectionViewCell.xib */,
-				627E6F4A255AE01E0022A654 /* FeedViewController.swift */,
+				623597ED256202360002BADB /* Cells */,
 				6210F3B0255D8D1300A7B964 /* FeedCollectionViewFlowLayout.swift */,
-				62BA7BE6255F590D008CAECB /* FeedCollectionCellViewModel.swift */,
+				627E6F4A255AE01E0022A654 /* FeedViewController.swift */,
+				6210F3DC255DC71B00A7B964 /* FeedViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";

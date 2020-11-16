@@ -8,7 +8,7 @@
 import Combine
 
 public protocol RedditEndpointUseCase {
-    func fetchTopRedditPosts() -> AnyPublisher<Response<Meta<Child>>, Swift.Error>
+    func fetchTopRedditPosts() -> AnyPublisher<Response<Meta<Response<Child>>>, Swift.Error>
 }
 
 public protocol HasRedditPostsUseCase {
