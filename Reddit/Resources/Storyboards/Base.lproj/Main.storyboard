@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="79U-6f-D6c">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="79U-6f-D6c">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kQ6-C4-RrP" customClass="FeedCollectionViewFlowLayout" customModule="Reddit" customModuleProvider="target">
@@ -55,6 +55,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113.04347826086958" y="117.85714285714285"/>
+        </scene>
+        <!--Feed Details View Controller-->
+        <scene sceneID="UtF-pp-t2M">
+            <objects>
+                <viewController storyboardIdentifier="FeedDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eiD-Aa-eP8" customClass="FeedDetailsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XQA-UV-1Sw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iFT-38-CXb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Iut-88-fqz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iFT-38-CXb" firstAttribute="trailing" secondItem="Iut-88-fqz" secondAttribute="trailing" id="5Cz-Wt-bB7"/>
+                            <constraint firstItem="iFT-38-CXb" firstAttribute="leading" secondItem="Iut-88-fqz" secondAttribute="leading" id="7eO-57-WeC"/>
+                            <constraint firstItem="iFT-38-CXb" firstAttribute="top" secondItem="XQA-UV-1Sw" secondAttribute="top" id="HbF-bL-7G2"/>
+                            <constraint firstAttribute="bottom" secondItem="iFT-38-CXb" secondAttribute="bottom" id="dqH-7v-kg0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="iFT-38-CXb" id="ewJ-EC-7U4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yvu-o3-H78" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831.88405797101461" y="114.50892857142857"/>
         </scene>
     </scenes>
     <resources>

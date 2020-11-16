@@ -32,8 +32,9 @@ final class FeedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let attributes = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes,
             let collectionView = collectionView
         else { return UICollectionViewLayoutAttributes() }
-        attributes.frame.origin.x = sectionInset.left
-        attributes.frame.size.width = collectionView.bounds.width - sectionInset.left - sectionInset.right - minimumLineSpacing
+        attributes.frame.size.width = collectionView.bounds.width - minimumLineSpacing
+            - sectionInset.left - sectionInset.right - collectionView.safeAreaInsets.left - collectionView.safeAreaInsets.right
+        attributes.frame.origin.x = (collectionView.bounds.width - attributes.frame.size.width) / 2 + collectionView.safeAreaInsets.left / 3
         return attributes
     }
     

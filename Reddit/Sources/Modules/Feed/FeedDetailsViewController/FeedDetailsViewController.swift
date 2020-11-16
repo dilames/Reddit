@@ -11,6 +11,8 @@ import Platform
 
 final class FeedDetailsViewController: UIViewController, ViewModelContainer {
     
+    @IBOutlet private var imageView: UIImageView!
+    
     func didSetViewModel(_ viewModel: FeedDetailsViewModel) {
         
     }

@@ -38,4 +38,13 @@ extension ApplicationCoordinator {
         viewController.viewModel = viewModel
         return viewController
     }
+    
+    func feedDetailsViewController(url: URL) -> FeedDetailsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let viewController = storyboard.instantiateViewController(identifier: "FeedDetailsViewController") as FeedDetailsViewController
+        let viewModel = FeedDetailsViewModel(useCases: useCaseProvider, url: url)
+        viewController.viewModel = viewModel
+        return viewController
+    }
+    
 }
