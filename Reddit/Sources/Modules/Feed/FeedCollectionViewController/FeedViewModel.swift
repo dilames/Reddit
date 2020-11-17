@@ -20,6 +20,7 @@ struct FeedViewModel: ViewModel {
     
     struct Input {
         let indexPath: AnyPublisher<Int, Never>
+        let refreshing: AnyPublisher<Bool, Never>
     }
     
     struct Handlers {
@@ -41,7 +42,13 @@ struct FeedViewModel: ViewModel {
         let fetchNextPage = input.indexPath
             .flatMap { _ in useCases.redditEndpoint.fetchNextPage() }
         
-        let collection = Publishers.Merge(fetchFirstPage, fetchNextPage)
+        let refreshPage = input.refreshing
+            .filter { $0 }
+            .flatMap { _ in Future<[Child], Swift.Error>({ $0(.success([Child]())) }) }
+            .merge(with: fetchFirstPage)
+            .eraseToAnyPublisher()
+            
+        let collection = Publishers.Merge3(fetchFirstPage, fetchNextPage, refreshPage)
             .catch { _ in Empty<[Child], Never>() }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

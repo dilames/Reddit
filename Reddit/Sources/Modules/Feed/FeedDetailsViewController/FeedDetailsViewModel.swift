@@ -9,6 +9,7 @@ import Foundation
 import Platform
 import Domain
 import Combine
+import UIKit
 
 struct FeedDetailsViewModel: ViewModel {
     

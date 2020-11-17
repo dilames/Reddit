@@ -63,6 +63,7 @@ final class FeedCollectionViewCell: AnimatableCollectionViewCell, ReusableViewMo
     }
     
     func didSetViewModel(_ viewModel: FeedCollectionCellViewModel) {
+        
         let output = viewModel.transform()
         titleLabel.text = viewModel.title
         authorLabel.text = viewModel.author

@@ -16,6 +16,8 @@ final class FeedViewController: UIViewController, ViewModelContainer {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    private var refreshControl: UIRefreshControl = UIRefreshControl()
+    
     private lazy var flatCollectionDataSource = FlatCollectionViewDataSource<[Child]>(
         cellConstructor: { [unowned self] collectionView, collection, indexPath in
             let cellView = collectionView.dequeueReusableCell(forType: FeedCollectionViewCell.self, for: indexPath)
@@ -39,6 +41,9 @@ final class FeedViewController: UIViewController, ViewModelContainer {
         collectionView.registerNib(withType: FeedCollectionViewCell.self)
         collectionView.dataSource = flatCollectionDataSource
         collectionView.backgroundColor = .white
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
     }
     
     func didSetViewModel(_ viewModel: FeedViewModel) {
@@ -56,7 +61,9 @@ final class FeedViewController: UIViewController, ViewModelContainer {
             .debounce(for: 2.0, scheduler: DispatchQueue.main)
             .eraseToAnyPublisher()
         
-        let input = FeedViewModel.Input(indexPath: indexPathPublisher)        
+        let isRefreshing = refreshControl.publisher(for: \.isRefreshing).eraseToAnyPublisher()
+        
+        let input = FeedViewModel.Input(indexPath: indexPathPublisher, refreshing: isRefreshing)
         let output = viewModel.transform(input)
         
         _ = output.collection
@@ -72,6 +79,7 @@ final class FeedViewController: UIViewController, ViewModelContainer {
 }
 
 // MARK: UICollectionViewDelegate
+#warning("TO DO: Should be moved to somekind of Combine.UICollectionViewDelegate")
 extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -80,4 +88,13 @@ extension FeedViewController: UICollectionViewDelegate {
             let viewModel = viewCell.viewModel else { return }
         self.viewModel.handlers.openDetails.send((viewModel.imageURL, viewCell))
     }
+    
+}
+
+extension FeedViewController {
+    
+    @objc func refreshData() {
+        refreshControl.endRefreshing()
+    }
+    
 }
